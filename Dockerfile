@@ -17,6 +17,17 @@ RUN apt-get update && apt-get install -y \
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
+
+#파일 권한 변경
+RUN mkdir -p storage/framework/sessions
+RUN mkdir -p storage/framework/views
+RUN mkdir -p storage/framework/cache
+RUN mkdir -p storage/logs
+RUN chmod 777 storage/logs
+RUN chmod 777 -R storage/ bootstrap/
+
+
+
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
