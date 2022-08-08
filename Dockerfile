@@ -40,6 +40,11 @@ RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
 # Set working directory
-WORKDIR /var/www
+WORKDIR /var/www/html
 
 USER $user
+
+# 포트 허용
+EXPOSE 9080
+EXPOSE 8000
+#EXPOSE 443
